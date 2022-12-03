@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/output.css">
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+</head>
+<body>
+    <header class="shadow-md py-[5px]">
+        <div class="px-[165px] flex-between">
+            <div class="flex-align-ct">
+                <a href="/"><img class="w-[200px]" src="/img/LOGO.png" alt="" class="header__logo"></a>
+                <div class="header__seach bg-yellowLight2 py-[10px] px-[12px] rounded-[12px] ml-[48px]">
+                    <input type="text" placeholder="Search" class="bg-transparent outline-none">
+                    <i class="fa-solid fa-magnifying-glass text-gray"></i>
+                </div>
+            </div>
+            <div class="flex-align-ct gap-[20px] font-bold text-[16px] text-black">
+                <div class="header__navbar transition-all[3s]">
+                    <a class="mr-[28px] hover:text-orange" href="">Restaurants</a>
+                    <a class="mr-[28px] hover:text-orange" href="">Deals</a>
+                    <a class="mr-[28px] hover:text-orange" href="">My orders</a>
+                    <a class="mr-[28px] hover:text-orange" href="/login">Login</a>
+                    <a class="mr-[28px] hover:text-orange" href="">Resgister</a>
+                </div>
+                <div class="relative">
+                    <a href="/cart">
+                        <svg class="" width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 1.66666L2.5 4.99999V16.6667C2.5 17.1087 2.67559 17.5326 2.98816 17.8452C3.30072 18.1577 3.72464 18.3333 4.16667 18.3333H15.8333C16.2754 18.3333 16.6993 18.1577 17.0118 17.8452C17.3244 17.5326 17.5 17.1087 17.5 16.6667V4.99999L15 1.66666H5Z" stroke="#FD6D22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.5 5H17.5" stroke="#FD6D22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.3333 8.33334C13.3333 9.2174 12.9821 10.0652 12.357 10.6904C11.7319 11.3155 10.884 11.6667 9.99999 11.6667C9.11593 11.6667 8.26809 11.3155 7.64297 10.6904C7.01785 10.0652 6.66666 9.2174 6.66666 8.33334" stroke="#FD6D22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <div class="quanlity w-[25px] h-[25px] rounded-lg bg-orange absolute text-white flex-align-ct justify-center top-[-85%] left-[85%] text-[13px]">4</div>
+                </div>
+                <!-- <button class="header__login bg-orange px-5 py-2 rounded-lg text-white hover:opacity-90 transition-all ml-5">Login</button>
+                <button class=
+                "header__resgister border-[1px] border-orange px-5
+                py-2 rounded-lg text-orange hover:bg-orange hover:text-white transition-all">Resgister
+                </button> -->
+            </div>
+        </div>
+    </header>
+    <div class="body px-[165px]">
+        <%- body %>
+    </div>
+    <footer></footer>
+    <script src="../js/app.js"></script>
+</body>
+</html>
