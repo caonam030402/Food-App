@@ -17,11 +17,13 @@ module.exports = {
   mode: 'jit',
   purge: [
     "./resources/views/*.ejs",
-    "./resources/views/customers/*.ejs"
+    "./resources/views/customers/*.ejs",
+    "./resources/views/auth/*.ejs"
   ],
   content: [
     "./resources/views/*.ejs",
-    "./resources/views/customers/*.ejs"
+    "./resources/views/customers/*.ejs",
+    "./resources/views/auth/*.ejs"
   ],
   theme: {
     colors: {

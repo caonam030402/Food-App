@@ -23,7 +23,11 @@ app.get('/cart', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.render('customers/login');
+    res.render('auth/login');
+})
+
+app.get('/register', (req, res) => {
+    res.render('auth/register');
 })
 
 app.listen(PORT, () => {
