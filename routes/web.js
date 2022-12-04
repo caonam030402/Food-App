@@ -6,9 +6,11 @@ const initRoutes = (app) => {
 
     // Render view
     app.get('/', homeController.index)
-    app.get('/cart' , cartController().index)
-    app.get('/login', authController().login)
-    app.get('/register', authController().register)
+    app.get('/login', authController.login)
+    app.get('/register', authController.register)
+
+    app.get('/cart' , cartController.index)
+    app.post('/update-cart', cartController.updateCartPizza)
 }
 
 module.exports = initRoutes

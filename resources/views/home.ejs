@@ -77,7 +77,7 @@ px]">
                         <span class="text-xl font-bold"><%= pizza.price %></span>
                     </div>
                 </div>
-                <button class="bg-orange w-[30px] h-[30px] font-bold text-lg flex-center text-white rounded-2xl">
+                <button data-pizza = "<%= JSON.stringify(pizza) %> " class="add-to-cart bg-orange w-[30px] h-[30px] font-bold text-lg flex-center text-white rounded-2xl">
                     <i class="fa-sharp fa-solid fa-plus"></i>
                 </button>
             </div>
