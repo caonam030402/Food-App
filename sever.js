@@ -4,6 +4,19 @@ const ejs = require('ejs');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 const PORT = process.env.PORT || 3000;
+const mongoose = require('mongoose');
+
+// Database connection
+async function connect(){
+    try {
+        await mongoose.connect('mongodb://localhost:27017/Food');
+        console.log("DB connected!!!");
+    } catch (error) {
+        console.log("DB not connect!!!");
+    }
+    
+}
+connect();
 
 // Assets
 app.use(express.static('public'))
