@@ -1,3 +1,7 @@
+const User = require('../../models/User')
+const bcrypt = require('bcrypt');
+const passport = require('passport')
+
 const authController = {
    
     // Render Login
@@ -9,6 +13,33 @@ const authController = {
         }
     },
 
+    postLogin: async (req, res, next) => {
+        const { email, password }   = req.body
+        // Validate request 
+         if(!email || !password) {
+             req.flash('error', 'All fields are required')
+             return res.redirect('/login')
+         }
+         passport.authenticate('local', (err, user, info) => {
+             if(err) {
+                 req.flash('error', info.message )
+                 return next(err)
+             }
+             if(!user) {
+                 req.flash('error', info.message )
+                 return res.redirect('/login')
+             }
+             req.logIn(user, (err) => {
+                 if(err) {
+                     req.flash('error', info.message ) 
+                     return next(err)
+                 }
+
+                 return res.redirect(_getRedirectUrl(req))
+             })
+         })(req, res, next)
+    },
+
     // Render Register
     register: async (req, res) => {
         try {
@@ -16,6 +47,51 @@ const authController = {
         } catch (err) {
             res.render('error')
         }
+    },
+
+    // Post Register
+    postRegister: async (req, res) => {
+        const {username, email, password} = req.body
+        console.log(req.body)
+
+        // xác thực yêu cầu
+        if(!username || !email || !password) {
+            req.flash('error', 'is required')
+            req.flash('username' , username)
+            req.flash('email' , email)
+            return res.redirect('/register')
+        }
+
+        // Check if email exists
+        User.exists({email: email}), (err, result) => {
+            if(result) {
+                req.flash('error', 'Email is required')
+                req.flash('username' , username)
+                req.flash('email' , email)
+                return res.redirect('/register')
+            }
+        }
+
+        // Hash password
+        const hashPassword = await bcrypt.hash(password, 10)
+
+        // Create User
+        const user = new User( {
+            username,
+            email,
+            password: hashPassword
+        })
+
+        // Lưu user lên database
+        user.save().then((user) => {
+            // Đăng kí thành công thì login luôn
+            return res.redirect('/')
+
+        }).catch(err => {
+            req.flash('error', 'Something went wrong')
+            return res.redirect('/register')
+        })
+
     }
 }
 

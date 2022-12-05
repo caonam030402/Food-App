@@ -17,7 +17,8 @@ const cartController = {
             req.session.cart = {
                 items: {},
                 totalQty: 0,
-                totalPrice: 0
+                totalPrice: 0,
+                totalItems: 0
             }
         }
 
@@ -31,6 +32,7 @@ const cartController = {
                 item: req.body,
                 qty: 1
             }
+            cart.totalItems = cart.totalItems + 1
             cart.totalQty = cart.totalQty + 1
             cart.totalPrice = cart.totalPrice + req.body.price
         }
@@ -40,6 +42,7 @@ const cartController = {
             cart.items[req.body._id].qty = cart.items[req.body._id].qty + 1
             cart.totalQty = cart.totalQty + 1
             cart.totalPrice =  cart.totalPrice + req.body.price
+            // cart.totalItems = cart.totalItems + Object.keys(req.session.car).length
         }
         return res.json({ totalQty: req.session.cart.totalQty })
     }
