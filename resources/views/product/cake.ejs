@@ -1,0 +1,46 @@
+<div class="sort flex-between mt-[40px]">
+    <h1 class="text-[35px] font-bold">Burger</h1>
+    <div class="">
+        <select class="font-semibold text-lg" name="sort" id="sort">
+            <option class="lowest" value="">Lowest price</option>
+            <option value="">Highest price</option>
+        </select>
+    </div>
+</div>
+<section class="product__list mt-8 mb-8 grid grid-cols-4 gap-20">
+    <% cake.forEach((cake) => { %>
+    <div class="product__item cursor-pointer">
+        <div>
+            <img class="product--image mx-auto mb-4" src="<%= cake.image %>" alt="">
+        </div>
+        <div class="product__content">
+            <div class="flex-align-ct">
+                <p class="font-bold text-xl">
+                    <%= cake.name %>
+                </p>
+                <span class="text-base text-orange ml-2 font-semibold">
+                    (<%= cake.size %>)
+                </span>
+            </div>
+            <div class="flex-between">
+                <div>
+                    <div class="text-xs text-orange">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-orange">$</span>
+                        <span class="text-xl font-bold"><%= cake.price %></span>
+                    </div>
+                </div>
+                <button data-pizza = "<%= JSON.stringify(cake) %> " class="add-to-cart bg-orange w-[30px] h-[30px] font-bold text-lg flex-center text-white rounded-2xl">
+                    <i class="fa-sharp fa-solid fa-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</section>

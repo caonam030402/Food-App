@@ -18,12 +18,14 @@ module.exports = {
   purge: [
     "./resources/views/*.ejs",
     "./resources/views/customers/*.ejs",
+    "./resources/views/product/*.ejs",
     "./resources/views/auth/*.ejs"
   ],
   content: [
     "./resources/views/*.ejs",
     "./resources/views/customers/*.ejs",
-    "./resources/views/auth/*.ejs"
+    "./resources/views/auth/*.ejs",
+    "./resources/views/product/*.ejs",
   ],
   theme: {
     colors: {

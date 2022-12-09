@@ -35,7 +35,7 @@ const authController = {
                      return next(err)
                  }
 
-                 return res.redirect(_getRedirectUrl(req))
+                 return res.redirect('/')
              })
          })(req, res, next)
     },
@@ -54,7 +54,6 @@ const authController = {
         const {username, email, password} = req.body
         console.log(req.body)
 
-        // xác thực yêu cầu
         if(!username || !email || !password) {
             req.flash('error', 'is required')
             req.flash('username' , username)
@@ -92,6 +91,11 @@ const authController = {
             return res.redirect('/register')
         })
 
+    },
+
+    logout: (req, res)=> {
+        req.logout()
+        return res.redirect('/login')
     }
 }
 

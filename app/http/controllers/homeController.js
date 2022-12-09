@@ -1,4 +1,4 @@
-const Pizza = require('../../models/Menu')
+const {Pizza, Burger} = require('../../models/Menu')
 
 const homeController = {
 

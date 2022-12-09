@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
 </head>
-<body>
+<body class="">
     <header class="shadow-md py-[5px]">
         <div class="px-[165px] flex-between">
             <div class="flex-align-ct">
@@ -21,22 +21,24 @@
                 </div>
             </div>
             <div class="flex-align-ct gap-[20px] font-bold text-[16px] text-black">
-                <div class="header__navbar transition-all[3s]">
-                    <a class="mr-[28px] hover:text-orange" href="">Restaurants</a>
-                    <a class="mr-[28px] hover:text-orange" href="">Deals</a>
-                    <a class="mr-[28px] hover:text-orange" href="">My orders</a>
-                    <a class="mr-[28px] hover:text-orange" href="/login">Login</a>
-                    <a class="mr-[28px] hover:text-orange" href="/register">Resgister</a>
+                <div class="header__navbar transition-all[3s] flex gap-8 mr-12">
+                    <a class="header__link hover:text-orange" href="">Home</a>
+                    <a class="header__link hover:text-orange" href="">Menus</a>
+                    <a class="header__link hover:text-orange" href="">Offers</a>
+                    <% if(user) { %>
+                        <form id="logout" action="/logout" method="POST">
+                            <a onclick="document.getElementById('logout').submit()" href="#" class="header__link hover:text-orange">Logout</a>
+                        </form>
+                    <% } else { %>
+                        <a class="header__link hover:text-orange" href="/register">Resgister</a>
+                        <a class="header__link hover:text-orange" href="/login">Login</a>
+                    <% } %> 
                 </div>
                 <div class="relative">
                     <a href="/cart">
-                        <svg class="" width="25" height="25" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 1.66666L2.5 4.99999V16.6667C2.5 17.1087 2.67559 17.5326 2.98816 17.8452C3.30072 18.1577 3.72464 18.3333 4.16667 18.3333H15.8333C16.2754 18.3333 16.6993 18.1577 17.0118 17.8452C17.3244 17.5326 17.5 17.1087 17.5 16.6667V4.99999L15 1.66666H5Z" stroke="#FD6D22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2.5 5H17.5" stroke="#FD6D22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M13.3333 8.33334C13.3333 9.2174 12.9821 10.0652 12.357 10.6904C11.7319 11.3155 10.884 11.6667 9.99999 11.6667C9.11593 11.6667 8.26809 11.3155 7.64297 10.6904C7.01785 10.0652 6.66666 9.2174 6.66666 8.33334" stroke="#FD6D22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <i class="fa-solid fa-cart-shopping text-2xl"></i>
                     </a>
-                    <div class="cart__header__quanlity w-[25px] h-[25px] rounded-lg bg-orange absolute text-white flex-align-ct justify-center top-[-85%] left-[85%] text-[13px]"> <%= session.cart ? session.cart.totalQty : '0' %></div>
+                    <div class="cart__header__quanlity w-[25px] h-[25px] rounded-full bg-orange absolute text-white flex-align-ct justify-center top-[-85%] left-[85%] text-[12px]"> <%= session.cart ? session.cart.totalQty : '0' %></div>
                 </div>
                 <!-- <button class="header__login bg-orange px-5 py-2 rounded-lg text-white hover:opacity-90 transition-all ml-5">Login</button>
                 <button class=
@@ -66,9 +68,13 @@
     <div id="toast"></div>
         
     <div>
+    <div style="display: none" class="loading">
+        <canvas id="pizza"></canvas>
+    </div>
     <footer></footer>
     <script src="/js/app.js"> </script>
     <script src="/js/noty.js"> </script>
+    <script src="/js/snippet.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>

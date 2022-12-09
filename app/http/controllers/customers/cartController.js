@@ -1,5 +1,4 @@
 const cartController = {
-
     index: async (req, res) => {
         try {
             res.render('customers/cart')
@@ -41,7 +40,7 @@ const cartController = {
         else {
             cart.items[req.body._id].qty = cart.items[req.body._id].qty + 1
             cart.totalQty = cart.totalQty + 1
-            cart.totalPrice =  cart.totalPrice + req.body.price
+            cart.totalPrice =  cart.totalPrice + Math.round(req.body.price)
             // cart.totalItems = cart.totalItems + Object.keys(req.session.car).length
         }
         return res.json({ totalQty: req.session.cart.totalQty })

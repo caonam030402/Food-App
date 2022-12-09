@@ -21,30 +21,30 @@ px]">
 
 <!-- CATEGORIES -->
 <section class="category flex mt-8 gap-8">
-    <div class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+    <div class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center border-orange border-2 border-opacity-30 bg-YellowLight">
         <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/pizza.svg" alt="">
         <p class="text-xl font-semibold mt-3">Pizza</p>
     </div>
-    <div class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
-        <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/burger.svg" alt="">
-        <p class="text-xl font-semibold mt-3">Burger</p>
-    </div>
-    <div class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+    <a href="/product/burger" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+            <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/burger.svg" alt="">
+            <p class="text-xl font-semibold mt-3">Burger</p>
+    </a>
+    <a href="/product/bqq" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
         <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/meat.svg" alt="">
         <p class="text-xl font-semibold mt-3">BQQ</p>
-    </div>
-    <div class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+    </a>
+    <a href="/product/sushi" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
         <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/sushi.svg" alt="">
         <p class="text-xl font-semibold mt-3">Sushi</p>
-    </div>
-    <div class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+    </a>
+    <a href="/product/vegan" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
         <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/broccoli.svg" alt="">
         <p class="text-xl font-semibold mt-3">Vegan</p>
-    </div>
-    <div class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
+    </a>
+    <a href="/product/cake" class="category__item flex-center flex-col w-1/6 shadow-md rounded-2xl py-[12px] px-8 text-center">
         <img class="w-[40px] h-[40px] m-0 mx-[auto]" src="img/cake.svg" alt="">
         <p class="text-xl font-semibold mt-3">Cake</p>
-    </div>
+    </a>
 </section>
 
 <!-- LIST PRODUCT -->
@@ -52,7 +52,7 @@ px]">
     <% pizza.forEach((pizza) => { %>
     <div class="product__item cursor-pointer">
         <div>
-            <img class="max-w-[170px] mx-auto mb-4" src="/img/<%= pizza.image %>" alt="">
+            <img class="product--image mx-auto mb-4" src="<%=pizza.image %>" alt="">
         </div>
         <div class="product__content">
             <div class="flex-align-ct">
@@ -87,7 +87,7 @@ px]">
 </section>
 
 <!-- RESTAURANTS -->
-<section class="">
+<!-- <section class="">
     <h1 class="mt-7 text-black mb-2 text-[30px] font-bold">Nearby restaurants</h1>
     <div class="restautants grid grid-cols-3 gap-6">
         <div class="rounded-xl overflow-hidden shadow-lg relative">
@@ -306,4 +306,4 @@ px]">
         </div>
         
     </div>
-</section>
+</section> -->

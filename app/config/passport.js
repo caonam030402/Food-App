@@ -4,9 +4,10 @@ const bcrypt = require('bcrypt')
 
 function init(passport) {
     passport.use(new LocalStrategy({ usernameField: 'email' }, async (email, password, done) => {
-        // Login
-        // check if email exists
-        const user = await User.findOne({ email: email })
+        
+        const user = await User.findOne({ email: email }) 
+
+        // Check if Email
         if(!user) {
             return done(null, false, { message: 'No user with this email' })
         }

@@ -1,10 +1,10 @@
 <section class="cart">
-    <% if(session.cart){ %>
+    <% if( session.cart ){ %>
         <!-- <div class="flex items-center h-14" >
             <img src="/img/cart-black.png" alt="">
             <h1 class="font-semibold text-2xl ml-3 ">Order Summary</h1>
         </div> -->
-    <div class="order flex mt-[40px] gap-24 px-5 py-5">
+    <div class="order flex mt-[40px] gap-24">
         <div class="pizza__list flex-1 overflow-hidden">
             <div class="flex-between mb-12">
                 <h1 class="text-2xl font-bold flex-center">
@@ -12,11 +12,11 @@
                 </h1>
                 <h1 class="text-2xl font-bold "><%= session.cart.totalItems %> items </h1>
             </div>
-            <div class="h-[49.5vh] overflow-hidden overflow-y-scroll list__cart pr-3">
+            <div class="h-[52vh] overflow-hidden overflow-y-scroll list__cart pr-3">
                 <% for(let pizza of Object.values(session.cart.items)) { %>
                     <div class="order__item flex items-center justify-between border-gray border-opacity-30 border-y-[1px] py-4">
                         <div class="flex-align-ct">
-                            <img class="max-w-[90px]" src="/img/<%= pizza.item.image %>" alt="">
+                            <img class="max-w-[90px] cart__img" src="<%= pizza.item.image %>" alt="">
                             <div class="ml-3">
                                 <p class="text-xl font-semibold w-[200px]"><%= pizza.item.name %></p>
                                 <p><%= pizza.size %></p>
@@ -29,8 +29,8 @@
                             <div class="oder__price text-xl font-bold ml-7 mr-5 w-[60px]">
                                 <%= pizza.item.price *  pizza.qty%> $
                             </div>
-                            <div class="oder__delete font-bold text-xl">
-                                <svg width="18" height="21" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <div data-session.cart = "<%= JSON.stringify(session.cart) %>" id="delete__cart" class="delete__cart font-bold text-xl">
+                                <svg class="" width="18" height="21" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.20928 3.57463L3.20928 2.22539C3.20928 1.86755 3.35143 1.52437 3.60446 1.27134C3.85749 1.01831 4.20067 0.87616 4.55851 0.87616L7.25698 0.87616C7.61482 0.87616 7.958 1.01831 8.21103 1.27134C8.46406 1.52437 8.60622 1.86755 8.60622 2.22539V3.57463M10.6301 3.57463L10.6301 13.0193C10.6301 13.3771 10.4879 13.7203 10.2349 13.9733C9.98185 14.2264 9.63867 14.3685 9.28083 14.3685L2.53466 14.3685C2.17682 14.3685 1.83364 14.2264 1.58061 13.9733C1.32758 13.7203 1.18542 13.3771 1.18542 13.0193L1.18542 3.57463L10.6301 3.57463Z" stroke="#C7C8D2" stroke-width="1.3155" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>                        
                             </div>
@@ -75,3 +75,4 @@
     </div>
     <% } %>
 </section>
+
