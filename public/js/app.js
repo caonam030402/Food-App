@@ -1,5 +1,9 @@
 const addToCart = document.querySelectorAll('.add-to-cart'),
-cartCounter = document.querySelector('.cart__header__quanlity')
+cartCounter = document.querySelector('.cart__header__quanlity'),
+cartDelete = document.querySelector('.delete__cart'),
+btnHighestPrice = document.querySelector('.lowest')
+
+
 
 function updateCart(pizza) {
     axios.post('/update-cart', pizza).then((res) => {
@@ -20,7 +24,7 @@ function updateCart(pizza) {
     })
 }
 
-// 
+// Add cart
 addToCart.forEach( (btn)=> {
     btn.addEventListener('click', () => {
         let pizza = JSON.parse(btn.dataset.pizza)
@@ -28,6 +32,7 @@ addToCart.forEach( (btn)=> {
     })
 })
 
-// Login
 
-
+function sort() {
+    
+}

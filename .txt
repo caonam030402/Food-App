@@ -1,0 +1,17 @@
+[+] Tạo UI HomePage
+[+] Tạo UI CartPage
+    - Khi có cart có sản phẩm
+    - Khi có không có sản phẩm
+[+] Tạo UI Login, Register
+[+] Tạo UI sản phẩm (Pizza, Burger,....)
+[+] Tạo chức năng thêm sản phẩm vào cart và cập sản phẩm trong cart
+[+] Tạo chức năng toast (Thông Báo)
+[+] Tạo chức năng Login, Register, Signout
+[-] Tạo Chức năng sort giá
+[-] Tạo Chức năng phân trang
+[-] Tạo chức xem đơn hàng giành cho khách hàng và quản trị viên
+[-] Tạo chức năng thay đổi trạng thái đơn hàng dành cho "admin"
+[-] Tạo trang đơn hàng có trạng thái
+[-] Tạo chức năng theo dõi đơn hàng cho "Người mua"
+[-] Hiển thị tất cả các đơn đặt hàng trên trang của "admin"
+[-] Tạo chức năng đặt hàng

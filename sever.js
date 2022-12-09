@@ -11,6 +11,7 @@ const flash = require('express-flash');
 const MongoDbStore = require('connect-mongo')(session)
 const passport = require('passport');
 
+
 // Database connection
 async function connect(){
     try {
@@ -57,6 +58,7 @@ app.use(express.urlencoded({ extended: false }))
 // Global middleware
 app.use((req, res, next) => {
     res.locals.session = req.session
+    res.locals.user = req.user
     next();
 })
 
