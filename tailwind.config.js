@@ -40,6 +40,7 @@ module.exports = {
       'gray': '#83859C',
       'purpleDark': '#2B2B43',
       'yellowLight2' : '#EDEEF2',
+      'green' : '#00ff00',
     },
     extend: {},
   },

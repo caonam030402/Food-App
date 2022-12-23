@@ -4,27 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Good Food</title>
     <link rel="stylesheet" type="text/css" href="/css/output.css">
     <link rel="stylesheet" type="text/css" href="/css/app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
 </head>
 <body class="">
-    <header class="shadow-md py-[5px]">
-        <div class="px-[165px] flex-between">
+    <div class="modal fixed top-0 right-0 bottom-0 left-0 bg-y1 bg-opacity-0 hidden"></div>
+    <header class=" py-[5px]">
+        <div class="px-[110px] flex-between">
             <div class="flex-align-ct">
                 <a href="/"><img class="w-[200px]" src="/img/LOGO.png" alt="" class="header__logo"></a>
-                <div class="header__seach bg-yellowLight2 py-[10px] px-[12px] rounded-[12px] ml-[48px]">
-                    <input type="text" placeholder="Search" class="bg-transparent outline-none">
+                <div class=" bg-yellowLight2 py-[10px] px-[12px] rounded-[12px] ml-[48px] relative header__search">
+                    <input type="text" placeholder="Search" class="bg-transparent outline-none header__search--ele">
                     <i class="fa-solid fa-magnifying-glass text-gray"></i>
+                    <div class="header__list--search absolute top-[100%] z-30 bg-y1 w-full right-0 shadow-xl hidden">
+                        <ul class="list__search">
+                            <!-- <li class="py-[10px] px-[15px]">
+                                Bánh Bizzaa
+                            </li>
+                            <li class="header__search-item py-[10px] px-[15px]">Bánh Bizzaa</li>
+                            <li class="py-[10px] px-[15px]">Bánh Bizzaa</li> -->
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="flex-align-ct gap-[20px] font-bold text-[16px] text-black">
                 <div class="header__navbar transition-all[3s] flex gap-8 mr-12">
-                    <a class="header__link hover:text-orange" href="">Home</a>
-                    <a class="header__link hover:text-orange" href="">Menus</a>
-                    <a class="header__link hover:text-orange" href="">Offers</a>
+                    <a class="header__link hover:text-orange" href="/">Home</a>
+                    <a class="header__link hover:text-orange" href="#">Menus</a>
+                    
+                    
+                    <% if(user) { %>
+                        <% if(session.user.role === 'admin') { %>
+                            <a class="header__link hover:text-orange" href="/admin/orders">Order</a>
+                         <%} else { %> 
+                            <a class="header__link hover:text-orange" href="/customer/orders">Order</a>
+                        <% } %> 
+                    <% } %> 
                     <% if(user) { %>
                         <form id="logout" action="/logout" method="POST">
                             <a onclick="document.getElementById('logout').submit()" href="#" class="header__link hover:text-orange">Logout</a>
@@ -36,19 +55,27 @@
                 </div>
                 <div class="relative">
                     <a href="/cart">
-                        <i class="fa-solid fa-cart-shopping text-2xl"></i>
+                        <img src="/img/cart.svg" alt="" class="">
                     </a>
-                    <div class="cart__header__quanlity w-[25px] h-[25px] rounded-full bg-orange absolute text-white flex-align-ct justify-center top-[-85%] left-[85%] text-[12px]"> <%= session.cart ? session.cart.totalQty : '0' %></div>
+                    <div class="cart__header__quanlity w-[18px] h-[18px] rounded-full bg-orange absolute text-white flex-align-ct justify-center top-[-60%] left-[85%] text-[10px]"> <%= session.cart ? session.cart.totalQty : '0' %></div>
                 </div>
+                <% if(user) { %>
+                    <div class="flex items-center ml-9">
+                        <% if(session.user) { %>
+                            <h1 class="mr-4"><%= session.user.user.email %> </h1>
+                            <img class="w-[40px]" src="/img/avatar.png" alt="">
+                        <% } %> 
+                    </div>
+                <% } %>
                 <!-- <button class="header__login bg-orange px-5 py-2 rounded-lg text-white hover:opacity-90 transition-all ml-5">Login</button>
                 <button class=
                 "header__resgister border-[1px] border-orange px-5
                 py-2 rounded-lg text-orange hover:bg-orange hover:text-white transition-all">Resgister
                 </button> -->
-            </div>
+            </div> 
         </div>
     </header>
-    <div class="body px-[165px]">
+    <div class="body px-[110px]">
         <%- body %>
     </div>
     <!-- <div id="toast" class="toast fixed right-[2%] top-[3%] z-[6000000000] bg-white rounded-lg">
@@ -72,9 +99,12 @@
         <canvas id="pizza"></canvas>
     </div>
     <footer></footer>
-    <script src="/js/app.js"> </script>
+    <script type="module" src="/js/app.js"> </script>
     <script src="/js/noty.js"> </script>
     <script src="/js/snippet.js"></script>
+    <script type="module" src="/js/search.js"> </script>
+    <script type="module" src="/js/admin.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>

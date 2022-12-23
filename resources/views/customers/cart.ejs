@@ -16,7 +16,7 @@
                 <% for(let pizza of Object.values(session.cart.items)) { %>
                     <div class="order__item flex items-center justify-between border-gray border-opacity-30 border-y-[1px] py-4">
                         <div class="flex-align-ct">
-                            <img class="max-w-[90px] cart__img" src="<%= pizza.item.image %>" alt="">
+                            <img class="max-w-[90px] h-auto cart__img" src="<%= pizza.item.image %>" alt="">
                             <div class="ml-3">
                                 <p class="text-xl font-semibold w-[200px]"><%= pizza.item.name %></p>
                                 <p><%= pizza.size %></p>
@@ -45,27 +45,35 @@
         </div>
         <div class="mb-12 w-[30%]">
             <h1 class="text-2xl font-bold mb-10">Order Summary</h1>
-            <form action="" class="">
-                <h1 class="text-xl font-medium mb-4">Phone Number</h1>
-                <input class="border border-gray border-opacity-40 p-2 w-[100%] mb-2" type="text" placeholder="Phone Number">
-                <h1 class="text-xl font-medium mb-4 mt-4">Address</h1>
-                <input class="border border-gray border-opacity-40 p-2 w-[100%]" type="text" placeholder="Address">
-                <h1 class="text-xl font-medium mb-4 mt-4">Message</h1>
-                <input class="border border-gray border-opacity-40 p-2 w-[100%]" type="text" placeholder="Message">
 
-                <div class="flex-between mt-10">
-                    <span class="font-semibold mr-2 text-xl">Total Amount: </span>
-                    <span class="font-bold text-2xl"><%= session.cart.totalPrice %>$</span>
-                </div>
-
+            <% if(user) { %> 
                 <div>
-                    <button class="btn-primary mt-10 w-[100%]"type="submit"> Order Now</button>
+                    <form action="/orders" method="POST" class="">
+                        <h1 class="text-xl font-medium mb-4">Phone Number</h1>
+                        <input name="phone" class="border border-gray border-opacity-40 p-2 w-[100%] mb-2" type="text" placeholder="Phone Number">
+                        <h1 class="text-xl font-medium mb-4 mt-4">Address</h1>
+                        <input name="address" class="border border-gray border-opacity-40 p-2 w-[100%]" type="text" placeholder="Address">
+                        <h1 class="text-xl font-medium mb-4 mt-4">Message</h1>
+                        <input name="message" class="border border-gray border-opacity-40 p-2 w-[100%]" type="text" placeholder="Message">
+        
+                        <div class="flex-between mt-10">
+                            <span class="font-semibold mr-2 text-xl">Total Amount: </span>
+                            <span class="font-bold text-2xl"><%= session.cart.totalPrice %>$</span>
+                        </div>
+        
+                        <div>
+                            <button class="btn-primary mt-10 w-[100%]"type="submit"> Order Now</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            <% } else { %> 
+                <a href="/login" class="btn-primary mt-10 w-[100%]"type="submit"> Login to continue</a>
+            <% } %>
+            
         </div>
     </div>
     <% } else { %>
-    <div class="empty-cart">
+    <div class="empty-cart mb-20">
         <div class="container mx-auto text-center">
             <h1 class="text-[40px] font-bold mt-[40px]">Cart Empty</h1>
             <p>your cart empty add something</p>

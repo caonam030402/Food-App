@@ -12,6 +12,12 @@ const MongoDbStore = require('connect-mongo')(session)
 const passport = require('passport');
 
 
+// Middleware
+const guest = require('./app/http/middleware/guest')
+const auth = require('./app/http/middleware/auth')
+const admin = require('./app/http/middleware/admin')
+
+
 // Database connection
 async function connect(){
     try {
@@ -61,6 +67,7 @@ app.use((req, res, next) => {
     res.locals.user = req.user
     next();
 })
+
 
 // Set Template engine
 app.use(expressLayouts)

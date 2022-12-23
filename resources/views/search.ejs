@@ -1,15 +1,17 @@
-<div class="sort flex-between mt-[40px]">
-    <h1 class="text-[35px] font-bold">Sushi</h1>
-    <div class="">
-        <select class="font-semibold text-lg" name="sort" id="sort">
-            <option class="lowest" value="">Lowest price</option>
-            <option value="">Highest price</option>
-        </select>
+<section>
+    <div class="flex-between mt-6">
+        <h1 class="font-bold text-2xl">Search:</h1>
+        <div class="">
+            <select class="font-semibold text-lg" name="sort" id="sort">
+                <option class="lowest" value="">Lowest price</option>
+                <option value="">Highest price</option>
+            </select>
+        </div>
     </div>
-</div>
+</section>
 <section class="product__list mt-8 mb-8 grid grid-cols-4 gap-20">
     <% menu.forEach((menu) => { %>
-        <% if(menu.type === 'sushi') { %>
+        <% if(menu.type === 'bqq') { %>
             <div class="product__item cursor-pointer">
                 <div>
                     <img class="product--image mx-auto mb-4" src="<%= menu.image %>" alt="">

@@ -1,12 +1,12 @@
-const {Pizza, Burger, Sushi, Cake, Bqq, Vegan} = require('../../../models/Menu')
+const {Menu} = require('../../../models/Menu')
 
 const ProductController = {
 
     // Render Pizza
     burger: async (req, res) => {
         try {
-            const burger = await Burger.find()
-            res.render('product/burger', {burger: burger});
+            const menu = await Menu.find()
+            res.render('product/burger', {menu: menu});
         } catch (err) {
             res.render('error')
         }
@@ -14,8 +14,8 @@ const ProductController = {
 
     shusi: async (req, res) => {
         try {
-            const sushi = await Sushi.find()
-            res.render('product/sushi', {sushi: sushi});
+            const menu = await Menu.find()
+            res.render('product/sushi', {menu: menu});
         } catch (err) {
             res.render('error')
         }
@@ -23,8 +23,8 @@ const ProductController = {
 
     cake: async (req, res) => {
         try {
-            const cake = await Cake.find()
-            res.render('product/cake', {cake: cake});
+            const menu = await Menu.find()
+            res.render('product/cake', {menu: menu});
         } catch (err) {
             res.render('error')
         }
@@ -32,8 +32,8 @@ const ProductController = {
 
     bqq: async (req, res) => {
         try {
-            const bqq = await Bqq.find()
-            res.render('product/bqq', {bqq: bqq});
+            const menu = await Menu.find()
+            res.render('product/bqq', {menu: menu});
         } catch (err) {
             res.render('error')
         }
@@ -41,8 +41,8 @@ const ProductController = {
 
     vegan: async (req, res) => {
         try {
-            const vegan = await Vegan.find()
-            res.render('product/vegan', {vegan: vegan});
+            const menu = await Menu.find()
+            res.render('product/vegan', {menu: menu});
         } catch (err) {
             res.render('error')
         }

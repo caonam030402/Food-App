@@ -1,0 +1,53 @@
+<section class="status">
+    <div class="container mx-auto">
+        <div class="status-box w-full w-[80%] mx-auto">
+            <div class="flex items-center justify-between mb-12">
+                <h1 class="text-xl font-bold">Track delivery status</h1>
+                <h6 class="bg-white py-1 rounded-full px-4 text-orange">
+                    <span class="text-black font-bold">Menu code:</span>
+                    <%= order._id %></h6>
+                <input id="hiddenInput" type="hidden" value="<%= JSON.stringify(order) %>">
+            </div>
+
+            <div class="text-center mb-16 mt-20">
+                <p class="status__text font-bold text-[30px]"></p>
+                <p class="status__time">20/21</p>
+            </div>
+            <ul class="flex">
+                <li class="status__item text-sm md:text-xl" data-status="order_placed">
+                    <ion-icon class="status__icon " name="bag-check-outline"></ion-icon>
+                    <ion-icon name="ellipse" class="status__circle"></ion-icon>
+                    <span class="">
+                        Order Placed
+                    </span>
+                </li>
+                <li class="status__item text-sm md:text-xl" data-status="confirmed">
+                    <ion-icon name="checkmark-done-outline"></ion-icon>
+                    <ion-icon name="ellipse" class="status__circle"></ion-icon>
+                    <span>Order confirmation
+                    </span>
+                </li>
+                <li class="status__item text-sm md:text-xl" data-status="prepared">
+                    <ion-icon name="pizza-outline"></ion-icon>
+                    <ion-icon name="ellipse" class="status__circle"></ion-icon>
+                    <span>Preparation</span>
+                </li>
+                <li class="status__item text-sm md:text-xl" data-status="delivered">
+                    <ion-icon name="bicycle-outline"></ion-icon>
+                    <ion-icon name="ellipse" class="status__circle"></ion-icon>
+                    <span>Out for delivery </span>
+                </li>
+                <li class="status__item text-sm md:text-xl" data-status="completed">
+                    <ion-icon name="happy-outline"></ion-icon>
+                    <ion-icon name="ellipse" class="status__circle"></ion-icon>
+                    <span>Complete</span>
+                </li>
+            </ul>
+            <div class="">
+                <div class="info__status">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

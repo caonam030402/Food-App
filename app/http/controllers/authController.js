@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt');
 const passport = require('passport')
 
 const authController = {
-   
+  
+
     // Render Login
     login: async (req, res) => {
         try {
@@ -14,12 +15,21 @@ const authController = {
     },
 
     postLogin: async (req, res, next) => {
-        const { email, password }   = req.body
+        const { email, password}   = req.body
         // Validate request 
          if(!email || !password) {
              req.flash('error', 'All fields are required')
              return res.redirect('/login')
          }
+
+         req.session.user = {
+            user: {
+                email: req.body.email,
+                username: req.body.username,
+                password: req.body.password
+            },
+        }
+
          passport.authenticate('local', (err, user, info) => {
              if(err) {
                  req.flash('error', info.message )
@@ -35,7 +45,11 @@ const authController = {
                      return next(err)
                  }
 
+                 const _getRedirectUrl = (req) => {
+                    return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders'
+                }
                  return res.redirect('/')
+                 
              })
          })(req, res, next)
     },
@@ -84,7 +98,7 @@ const authController = {
         // Lưu user lên database
         user.save().then((user) => {
             // Đăng kí thành công thì login luôn
-            return res.redirect('/')
+            return res.redirect('/login')
 
         }).catch(err => {
             req.flash('error', 'Something went wrong')
