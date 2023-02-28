@@ -1,6 +1,6 @@
 <section>
     <div class="flex-between mt-6">
-        <h1 class="font-bold text-2xl">Search:</h1>
+        <h1 class="search__name font-bold text-2xl">Search</h1>
         <div class="">
             <select class="font-semibold text-lg" name="sort" id="sort">
                 <option class="lowest" value="">Lowest price</option>
@@ -10,8 +10,8 @@
     </div>
 </section>
 <section class="product__list mt-8 mb-8 grid grid-cols-4 gap-20">
-    <% menu.forEach((menu) => { %>
-        <% if(menu.type === 'bqq') { %>
+    <% if(menu.length > 0) { %> 
+        <% menu.forEach((menu) => { %>
             <div class="product__item cursor-pointer">
                 <div>
                     <img class="product--image mx-auto mb-4" src="<%= menu.image %>" alt="">
@@ -45,6 +45,12 @@
                     </div>
                 </div>
             </div>
-        <% } %> 
     <% }) %>
+    <% } else{ %> 
+        <div class="no__search--show text-center absolute mt-20">
+            <img width="30%" class=" opacity-40" src="/img/data_search.png" alt="">
+            <h1 class="font-bold text-[30px] b-[30px]">No results found</h1>
+            <p class="text-lg">Please try to use the common words than</p>
+        </div>
+    <%} %> 
 </section>

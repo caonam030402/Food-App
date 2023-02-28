@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon sever.js",
+    "start": "nodemon server.js",
     "scss": "sass resources/scss/app.scss:public/css/app.css --watch",
     "tw": "npx tailwindcss -i ./resources/tailwind/style.css -o ./public/css/output.css --watch"
   },
